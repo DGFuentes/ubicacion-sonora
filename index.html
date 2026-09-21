@@ -323,22 +323,21 @@
   }
 
   function registrarUbicacion(lat, lon, accuracy, dentroSonora){
-    if(!WEBHOOK_URL || WEBHOOK_URL.indexOf('https://script.google.com/macros/s/AKfycbzi7pp0mxljSR5GKNZfWQ2NyE-iSH5XMRoHW3UcfXgeFKHeDrH4XFXIgy7H6GtyIUixpQ/exec') !== -1) return;
-    try{
-      fetch(WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          lat: lat,
-          lon: lon,
-          accuracy: accuracy,
-          dentroSonora: dentroSonora,
-          userAgent: navigator.userAgent
-        })
-      }).catch(function(){});
-    }catch(e){}
-  }
+  try{
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        lat: lat,
+        lon: lon,
+        accuracy: accuracy,
+        dentroSonora: dentroSonora,
+        userAgent: navigator.userAgent
+      })
+    }).catch(function(){});
+  }catch(e){}
+}
 
   checkbox.addEventListener('change', function(){
     btn.disabled = !checkbox.checked;
